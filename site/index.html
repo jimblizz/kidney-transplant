@@ -1,82 +1,165 @@
-<!doctype html>
-<html lang="en-GB">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Transplant Day</title>
 <meta name="description" content="A living-donor kidney transplant told through the hospital notes, with plain-English explanations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f7f6f3; --surface:#fff; --ink:#1d1d1b; --muted:#6b6a66; --line:#dcdad4;
-  --note-bg:#efeee8; --band:#e9e4da; --peak:#1f7a54; --peak-ink:#fff; --focus:#b4432f;
-  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --bg:#f5f2ec; --surface:#fffdf9; --ink:#23201b; --muted:#5e584f; --line:#d8d1c5;
+  --paper:#fdfbf6; --paper-bar:#eef1e7; --hole:#d9d3c7; --band:#ebe5d9;
+  --rose:oklch(0.5 0.14 15); --rose-wash:oklch(0.95 0.028 15);
+  --ice:oklch(0.68 0.07 230); --ice-wash:oklch(0.95 0.018 230);
+  --focus:var(--rose); --shadow:rgb(60 40 20 / .08);
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --spine:var(--line); --hole-fill:var(--bg);
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#141413; --surface:#1d1d1b; --ink:#ecebe6; --muted:#9d9b94; --line:#34332f;
-    --note-bg:#22211f; --band:#2b2925; --peak:#5cc193; --peak-ink:#0d1f16; --focus:#e0735d;
+    --bg:#161513; --surface:#23211d; --ink:#ece7df; --muted:#a59e93; --line:#3a3731;
+    --paper:#1d1c19; --paper-bar:#222620; --hole:#3a3731; --band:#24211d;
+    --rose:oklch(0.79 0.11 15); --rose-wash:oklch(0.26 0.045 15);
+    --ice:oklch(0.64 0.07 230); --ice-wash:oklch(0.24 0.025 230);
+    --shadow:rgb(0 0 0 / .35);
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#141413; --surface:#1d1d1b; --ink:#ecebe6; --muted:#9d9b94; --line:#34332f;
-  --note-bg:#22211f; --band:#2b2925; --peak:#5cc193; --peak-ink:#0d1f16; --focus:#e0735d;
+  --bg:#161513; --surface:#23211d; --ink:#ece7df; --muted:#a59e93; --line:#3a3731;
+  --paper:#1d1c19; --paper-bar:#222620; --hole:#3a3731; --band:#24211d;
+  --rose:oklch(0.79 0.11 15); --rose-wash:oklch(0.26 0.045 15);
+  --ice:oklch(0.64 0.07 230); --ice-wash:oklch(0.24 0.025 230);
+  --shadow:rgb(0 0 0 / .35);
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans)}
-.wrap{max-width:72rem;margin:0 auto;padding:0 16px}
-.intro{padding:3rem 0 1rem}
-.intro h1{margin:0 0 .25rem;font-size:2rem}
-.intro p{margin:.25rem 0;color:var(--muted)}
-.clock{position:sticky;top:0;z-index:1;background:var(--bg);border-bottom:1px solid var(--line);
-  padding:.6rem 16px;display:flex;gap:1rem;justify-content:center;font:600 .95rem var(--mono)}
-.clock .el{color:var(--muted);font-weight:400}
-ol.timeline{list-style:none;margin:2rem 0;padding:0}
-.ev{display:grid;grid-template-columns:1fr 1fr;gap:.75rem 3rem;padding:1.5rem 0;position:relative}
-.ev::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:2px solid var(--line)}
-.label{grid-column:1/-1;justify-self:center;position:relative;margin:0;background:var(--bg);
-  padding:.25rem .75rem;font-size:1rem;text-align:center}
-.label time{display:block;font:600 .85rem var(--mono);color:var(--muted)}
-.m1 .label,.m2 .label{justify-self:stretch;background:var(--band);border-radius:.5rem;padding:1rem;font-size:1.25rem}
-.m2 .label{background:var(--peak);color:var(--peak-ink);font-size:1.6rem;padding:1.5rem}
-.m2 .label time{color:inherit}
-.note,.explain{position:relative;background:var(--bg)}
-.src{margin:0 0 .35rem;font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.txt{white-space:pre-line;font:.85rem/1.65 var(--mono);background:var(--note-bg);padding:.9rem 1rem;
-  border-radius:.4rem;overflow-wrap:anywhere}
-details{margin-top:.5rem;font:.85rem/1.65 var(--mono)}
-summary{cursor:pointer;color:var(--muted)}
-details ul{margin:.4rem 0 0;padding-left:1.1rem}
-.explain p{margin:0 0 .5rem}
-.fn{font-size:.85rem;color:var(--muted)}
-.term{font:inherit;color:inherit;background:none;border:0;padding:0;border-bottom:1px dotted currentColor;cursor:help}
-.term:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-[popover]{position:fixed;inset:auto 16px 16px;margin:0 auto;max-width:28rem;border:1px solid var(--line);
-  border-radius:.6rem;background:var(--surface);color:var(--ink);padding:1rem 1.1rem;box-shadow:0 8px 30px rgb(0 0 0/.25)}
-[popover] b{display:block;margin-bottom:.25rem}
-footer{padding:2rem 0 4rem;color:var(--muted);font-size:.85rem}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.55 var(--serif);overflow-x:clip;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--rose)} a:hover{color:var(--ink)}
+.wrap{max-width:70rem;margin:0 auto;padding:0 16px}
+
+/* Intro */
+.intro{display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(4rem,14vh,9rem) 0 3rem}
+.intro h1{margin:0;font:400 clamp(3.25rem,12vw,7rem)/.95 var(--serif);letter-spacing:-.025em;text-wrap:balance}
+.intro .meta{order:-1;margin:0 0 1.5rem;font:500 .75rem/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);max-width:34rem;text-wrap:balance}
+.intro .key{margin:1.75rem 0 0;font-size:clamp(1.15rem,2.6vw,1.35rem);line-height:1.5;max-width:34rem;text-wrap:pretty}
+.intro .team{margin:2rem 0 0;padding-top:1.25rem;border-top:1px solid var(--line);font-size:.95rem;color:var(--muted);max-width:30rem;text-wrap:pretty}
+
+/* Timeline */
+ol.timeline{list-style:none;margin:1rem 0 3rem;padding:0}
+.ev{--node:11px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem 4rem;padding:2.25rem 0;position:relative}
+.ev::before{content:"";position:absolute;left:calc(50% - 1px);top:0;bottom:0;width:2px;background:var(--spine);transition:background-color .8s}
+.ev:first-child::before{top:2.4rem}
+.ev:last-child::before{bottom:auto;height:2.4rem}
+.p1{--spine:var(--ice)}
+.p2{--spine:var(--rose)}
+.m2::before{background:linear-gradient(var(--ice),var(--rose) 22%)}
+
+.label{grid-column:1/-1;justify-self:center;position:relative;margin:0;background:var(--bg);padding:.3rem 1rem .4rem;text-align:center;
+  font:500 1.3rem/1.25 var(--serif);text-wrap:balance}
+.label::before{content:"";display:block;width:var(--node);height:var(--node);margin:0 auto .55rem;border-radius:50%;
+  background:var(--bg);border:2px solid var(--spine);transition:background-color .8s,border-color .8s}
+.label time{display:block;margin-bottom:.2rem;font:500 .8rem/1.4 var(--mono);letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Milestones */
+.m1 .label{justify-self:stretch;background:var(--band);border-radius:3px;padding:1.1rem 1rem 1.3rem;font-size:clamp(1.5rem,3.4vw,1.9rem)}
+.m1 .label::before{--node:13px;background:var(--spine);border-color:var(--spine)}
+.m1 .label time{color:var(--ink)}
+
+/* Peak */
+.m2{--hole-fill:var(--ice-wash);margin:0;padding:5.5rem 0 6rem;background:var(--ice-wash);
+  box-shadow:0 0 0 100vmax var(--ice-wash);clip-path:inset(0 -100vmax);transition:background-color 1.6s ease,box-shadow 1.6s ease}
+.m2.in{--hole-fill:var(--rose-wash);background:var(--rose-wash);box-shadow:0 0 0 100vmax var(--rose-wash)}
+.m2 .label{background:inherit;padding:.5rem 1.25rem 1rem;font:italic 400 clamp(1.6rem,4vw,2.2rem)/1.2 var(--serif);color:var(--ink)}
+.m2 .label::before{--node:18px;margin-bottom:1rem;background:var(--ice);border-color:var(--ice)}
+.m2.in .label::before{background:var(--rose);border-color:var(--rose)}
+.m2 .label time{margin:0 0 .15rem;font:400 clamp(4.75rem,17vw,9.5rem)/.9 var(--serif);font-style:normal;letter-spacing:-.035em;color:var(--rose);font-variant-numeric:lining-nums}
+.m2 .explain p:first-child{font-size:clamp(1.25rem,2.4vw,1.45rem);line-height:1.45}
+
+/* Note "printout" */
+.note{min-width:0}
+.src{margin:0 0 .5rem;font:500 .7rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.txt{--lh:1.75em;white-space:pre-line;overflow-wrap:anywhere;font:400 .8125rem/var(--lh) var(--mono);color:var(--ink);
+  padding:calc(var(--lh) / 2) 1rem calc(var(--lh) / 2) 34px;border:1px solid var(--line);
+  background:
+    radial-gradient(circle at 12px 50%,var(--hole-fill) 3.2px,var(--hole) 3.8px,transparent 4.4px) 0 0/24px var(--lh) repeat-y border-box,
+    repeating-linear-gradient(180deg,var(--line) 0 3px,transparent 3px 7px) 23px 0/1px 100% no-repeat border-box,
+    repeating-linear-gradient(180deg,var(--paper) 0 var(--lh),var(--paper-bar) var(--lh) calc(var(--lh) * 2)) content-box,
+    var(--paper);
+  background-origin:border-box,border-box,content-box,border-box;
+  box-shadow:0 1px 2px var(--shadow),0 6px 18px -10px var(--shadow)}
+details{margin:0 0 0 0;border:1px solid var(--line);border-top:1px dashed var(--hole);background:var(--paper);
+  font:400 .8125rem/1.7 var(--mono);box-shadow:0 1px 2px var(--shadow)}
+summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.5rem;min-height:44px;padding:0 1rem 0 34px;
+  color:var(--muted);font-weight:500;letter-spacing:.04em}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";display:inline-grid;place-items:center;width:1.1rem;height:1.1rem;border:1px solid currentColor;border-radius:2px;font-size:.8rem;line-height:1}
+details[open] summary::before{content:"−"}
+summary:hover{color:var(--ink)}
+details ul{margin:0;padding:0 1rem .9rem 34px;list-style:none}
+details li{padding-left:1em;text-indent:-1em;overflow-wrap:anywhere}
+details li::before{content:"· ";color:var(--muted)}
+
+/* Explanation */
+.explain{padding-top:0;min-width:0}
+.explain p{margin:0 0 .75rem;font-size:1.1875rem;line-height:1.55;text-wrap:pretty;max-width:34rem}
+
+/* Glossary terms */
+.term{font:inherit;color:inherit;background:none;border:0;padding:0 .05em;margin:0 -.05em;border-radius:2px;cursor:pointer;text-align:inherit;
+  text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em;
+  text-decoration-color:color-mix(in srgb,var(--rose) 65%,transparent);transition:background-color .15s}
+.term:hover{background:var(--rose-wash);text-decoration-color:var(--rose)}
+.m2 .term:hover{background:var(--bg)}
+.term:focus-visible,summary:focus-visible,.gl-x:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+/* Glossary card */
+[popover].gl{position:fixed;inset:auto 16px 16px;margin:0 auto;max-width:27rem;width:auto;
+  border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);
+  padding:1.1rem 3.25rem 1.25rem 1.25rem;font:400 1.0625rem/1.5 var(--serif);text-wrap:pretty;
+  box-shadow:0 2px 4px var(--shadow),0 20px 50px -12px rgb(0 0 0 / .3)}
+[popover].gl::before{content:"";position:absolute;left:1.25rem;top:0;width:2.5rem;height:3px;background:var(--rose);border-radius:0 0 2px 2px}
+[popover].gl b{display:block;margin-bottom:.3rem;font:500 1.3rem/1.2 var(--serif)}
+.gl-x{position:absolute;top:.35rem;right:.35rem;width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:4px;
+  background:none;color:var(--muted);font:400 1.5rem/1 var(--serif);cursor:pointer}
+.gl-x:hover{color:var(--ink);background:var(--bg)}
+
+footer{padding:2rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);font:400 .78rem/1.6 var(--mono);text-align:center;text-wrap:balance}
+
+/* Motion */
+@media (prefers-reduced-motion:no-preference){
+  html.anim .ev .note,html.anim .ev .explain{opacity:0;translate:0 14px;transition:opacity .7s ease,translate .7s cubic-bezier(.2,.7,.2,1)}
+  html.anim .ev .explain{transition-delay:.12s}
+  html.anim .ev.in .note,html.anim .ev.in .explain{opacity:1;translate:0 0}
+  [popover].gl{transition:opacity .2s,translate .2s,overlay .2s allow-discrete,display .2s allow-discrete;opacity:1;translate:0 0}
+  @starting-style{[popover].gl:popover-open{opacity:0;translate:0 10px}}
+}
+@media (prefers-reduced-motion:reduce){*,*::before{transition:none!important}}
+
+/* Mobile */
 @media (max-width:720px){
-  .ev{grid-template-columns:1fr;padding-left:1rem}
-  .ev::before{left:0}
-  .label{justify-self:start;text-align:left;padding-left:0}
-  .m1 .label,.m2 .label{padding:1rem}
+  .ev{grid-template-columns:minmax(0,1fr);gap:.9rem;padding:1.75rem 0 1.75rem 28px}
+  .ev::before{left:7px}
+  .ev:first-child::before{top:2.1rem}
+  .ev:last-child::before{height:2.1rem}
+  .label{justify-self:start;text-align:left;padding:0;font-size:1.2rem}
+  .label::before{position:absolute;left:calc(8px - 28px - var(--node) / 2);top:.2rem;margin:0}
+  .m1 .label{justify-self:stretch;margin-left:-28px;padding:1rem 1rem 1.1rem 28px;font-size:1.45rem}
+  .m1 .label::before{left:calc(8px - var(--node) / 2);top:1.15rem}
+  .m2{padding:3.5rem 0 4rem 28px}
+  .m2 .label{padding:0}
+  .m2 .label::before{top:.9rem}
+  .explain{padding-top:0}
+  .intro{padding-top:3.5rem}
 }
 </style>
-</head>
-<body>
-<div class="clock" aria-live="off"></div>
 <div class="wrap">
   <header class="intro">
     <h1>Transplant Day</h1>
-    <p>Living-donor kidney transplant · Guy's Hospital, London · Friday 5 December 2025</p>
-    <p>Left: what the hospital notes say. Right: what it means. Tap any underlined term for a one-line explanation.</p>
-    <p>Team: consultant transplant surgeon, three assisting surgeons, consultant anaesthetist, anaesthetic practitioner, scrub and circulating nurses.</p>
+    <p class="meta">Living-donor kidney transplant · Guy's Hospital, London · Friday 5 December 2025</p>
   </header>
   <main><ol class="timeline"></ol></main>
-  <footer>Source: the patient's own hospital record. Staff are named by role only. This page explains; it is not medical advice.</footer>
 </div>
 <script src="content.js"></script>
 <script>
@@ -89,31 +172,48 @@ const link = s => esc(s).replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, shown,
   return `<button type="button" class="term" popovertarget="${id}">${shown}</button>`;
 });
 
+// Spine phase: 0 before the kidney is on ice, 1 while cold, 2 once blood flows (reperfusion onwards)
+const ICE = events.findIndex(e => /on ice/i.test(e.label));
+const PEAK = events.findIndex(e => e.milestone === 2);
+const phase = i => i < ICE ? 0 : i < PEAK ? 1 : 2;
+
 document.querySelector('.timeline').innerHTML = events.map((e, i) => `
-<li class="ev m${e.milestone}" data-i="${i}">
-  <h2 class="label"><time>${esc(e.date ?? '')} ${esc(e.time)}</time>${esc(e.label)}</h2>
+<li class="ev m${e.milestone} p${phase(i)}" data-i="${i}">
+  <h2 class="label"><time>${esc(`${e.date ?? ''} ${e.time}`.trim())}</time>${esc(e.label)}</h2>
   <div class="note">
-    <p class="src">${esc(e.source)}</p>
     <div class="txt">${link(e.note)}</div>
     ${e.detail ? `<details><summary>Full note</summary><ul>${e.detail.map(d => `<li>${link(d)}</li>`).join('')}</ul></details>` : ''}
   </div>
   <div class="explain">
     <p>${link(e.explain)}</p>
-    ${e.footnote ? `<p class="fn">${link(e.footnote)}</p>` : ''}
   </div>
 </li>`).join('');
 
-document.body.insertAdjacentHTML('beforeend', Object.entries(glossary).map(([k, d]) =>
-  `<div popover id="${ids[k.toLowerCase()]}"><b>${esc(k)}</b>${esc(d)}</div>`).join(''));
+document.body.insertAdjacentHTML('beforeend', Object.entries(glossary).map(([k, d]) => {
+  const id = ids[k.toLowerCase()];
+  return `<div popover id="${id}" class="gl" role="dialog" aria-labelledby="${id}-t"><b id="${id}-t">${esc(k)}</b>${esc(d)}` +
+    `<button type="button" class="gl-x" popovertarget="${id}" popovertargetaction="hide" aria-label="Close">×</button></div>`;
+}).join(''));
 
-const clock = document.querySelector('.clock');
-const START = 14 * 60 + 40; // anaesthesia start
-const show = e => clock.innerHTML = `<span>${esc(e.date ?? 'Fri 5 Dec')} · ${esc(e.time)}</span>` +
-  (e.at >= START ? `<span class="el">+${Math.floor((e.at - START) / 60)}h ${String((e.at - START) % 60).padStart(2, '0')}m since anaesthesia start</span>` : '');
-show(events[0]);
-const io = new IntersectionObserver(es => es.forEach(x => x.isIntersecting && show(events[x.target.dataset.i])),
-  { rootMargin: '-30% 0px -60% 0px' });
-document.querySelectorAll('.ev').forEach(li => io.observe(li));
+const items = [...document.querySelectorAll('.ev')];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduce) items.forEach(li => li.classList.add('in'));
+else document.documentElement.classList.add('anim');
+
+// Geometry-based (works in embedded frames where IntersectionObserver can misreport)
+let queued = false;
+const update = () => {
+  queued = false;
+  const h = innerHeight;
+  items.forEach(li => {
+    const r = li.getBoundingClientRect();
+    if (r.top < h * 0.9 && r.bottom > 0) li.classList.add('in');
+  });
+};
+const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+addEventListener('scroll', queue, { passive: true });
+addEventListener('resize', queue);
+update();
+// Failsafe: never leave content hidden
+setTimeout(() => { if (!items.some(li => li.classList.contains('in'))) items.forEach(li => li.classList.add('in')); }, 1500);
 </script>
-</body>
-</html>
