@@ -1,1 +1,4 @@
 site/.forbidden
+node_modules/
+dist/
+.wrangler/

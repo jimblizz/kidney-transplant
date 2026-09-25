@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "transplant-day",
+  "compatibility_date": "2026-09-25",
+  "build": { "command": "sh build.sh" },
+  "assets": { "directory": "./dist" },
+  "routes": [{ "pattern": "transplant.jamesblizzard.com", "custom_domain": true }],
+  "workers_dev": false
+}
