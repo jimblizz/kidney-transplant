@@ -29,7 +29,7 @@ const blob = (read('./content.js') + read('./index.html')).toLowerCase();
 const forbidden = read('./.forbidden').split('\n').map(s => s.trim().toLowerCase()).filter(Boolean);
 if (!forbidden.length) errors.push('site/.forbidden missing or empty (see plan Task 1 Step 1)');
 const word = w => new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`); // whole words: "tomo" must not hit "anastomosis"
-  for (const w of forbidden) if (word(w).test(blob)) errors.push(`forbidden string present: "${w}"`);
+for (const w of forbidden) if (word(w).test(blob)) errors.push(`forbidden string present: "${w}"`);
 
 if (errors.length) { console.error(errors.join('\n')); process.exit(1); }
 console.log(`OK: ${events.length} events, ${keys.size} terms`);
