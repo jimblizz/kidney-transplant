@@ -62,6 +62,19 @@ Fri 5 Dec 2025 unless stated. ★ = milestone band.
 | 25 | 23:00 | "Renal Medical SPR came and review the patient … CXR has been done and reviewed. Central line can be used. She is happy for the patient to go back to the ward." | Cleared to go back | SpR |
 | 26 ★ | 23:31 | "Out of Recovery" | Back on Richard Bright Ward, 8h 52m after entering the anaesthetic room | — |
 
+**Hidden detail ("Full note"):** some events carry extra verbatim lines from the op note and benching note. They sit in a native `<details>` element, closed by default, and can contain glossary terms.
+
+| Event | Detail lines (verbatim) |
+|---|---|
+| #10 | Crossmatch status: Negative · Antibody incompatible transplant: No · Immunosuppression protocol: Low risk |
+| #12 | Findings: Standard anatomy · Iliac artery: Normal · Iliac vein: Normal · Inferior epigastric vessels: Ligated and divided · Spermatic cord / round ligament: Preserved |
+| #14 | Quality of cold perfusion: Good · Number of renal veins: One · Number of ureters: 1 · Renal parenchyma: Normal · Retrieval damage: No |
+| #15 | Renal artery 1: Renal artery to EIA, continuous 6-0 Prolene · Renal artery 2: Renal artery to EIA, continuous 6-0 Prolene · Renal vein 1: Renal vein to EIV, continuous 5-0 Prolene · Haemostasis: Complete · Any anastomoses redone? No |
+| #19 | Perinephric drain: 20Fr Robinson · Ipsilateral femoral pulse: Strong · Distal pulses present |
+| #23 | Drain out when: <30 ml · Catheter out: 5 days · Stent out: 3 weeks · Post-operative heparin to be given? Not required |
+
+Extra glossary terms: crossmatch, antibody incompatible, parenchyma, spermatic cord, perinephric, femoral pulse, heparin.
+
 **Source discrepancy (footnote on #15):** the organ checklist labels 17:45 "Anastomosis start", but the anaesthetic log labels it "Kidney Reperfusion". The WIT of 31 min (17:14 off ice → 17:45) matches reperfusion, so the page uses reperfusion.
 
 **Header strip:** procedure "Kidney Transplant – Living Donor" · theatre GH MT 04 · a team list by role (1 consultant surgeon, 3 assisting surgeons, 1 consultant anaesthetist, 1 anaesthetic practitioner, scrub and circulating nurses).
@@ -69,7 +82,7 @@ Fri 5 Dec 2025 unless stated. ★ = milestone band.
 ## Build
 
 - `site/index.html` holds the markup, CSS and render script. `site/content.js` holds `EVENTS` (the table above) and `GLOSSARY` (`{term: definition}`), about 50 entries.
-- Each event: `{time, label, note, explain, milestone: 0|1|2}`. Glossary terms are marked in `note`/`explain` text as `[[term]]` or `[[display text|term]]`. The renderer turns them into popover buttons. An unknown term throws at load, which catches typos.
+- Each event: `{time, label, note, explain, milestone: 0|1|2, detail?: string[]}`. Glossary terms are marked in `note`/`explain` text as `[[term]]` or `[[display text|term]]`. The renderer turns them into popover buttons. An unknown term throws at load, which catches typos.
 - No framework, no build step, no dependencies.
 - Publish as a private Artifact. It stays private until I choose to share it.
 
