@@ -27,7 +27,7 @@ Post-op pain plan: Routine Post-op Analgesia and [[PCA]]
       note: `Start of [[cold ischaemia time]] in donor: 5/12/2025 13:38
 Preservation solution: [[HTK]]
 Organ preservation technique's: [[Static cold storage]]`,
-      explain: `The donor's kidney is removed, flushed with preservation fluid and packed in ice. From now, a clock runs until it has a blood supply again.`,
+      explain: `The donor's kidney is removed in the same theatre, flushed with preservation fluid and packed in ice. From now, a clock runs until it has a blood supply again.`,
     },
     {
       time: '14:39', at: 879, milestone: 0,
@@ -55,13 +55,13 @@ Attempts: 1`,
       time: '14:44', at: 884, milestone: 1,
       label: 'Induction', source: 'Anaesthesia record',
       note: `Induction: 14:44
-([[TCI]]) [[propofol]] (1%) 500 mg/50 mL
-Target 4 micrograms/mL · [[Marsh|Marsh model]]/Plasma · New Bag 14:53
-(TCI) [[remifentanil]] 2 mg in sodium chloride 0.9% 40 mL
+[[plasmalyte-148|Plasma-Lyte 148]] · New Bag 14:49
+([[TCI]]) [[remifentanil]] 2 mg in sodium chloride 0.9% 40 mL
 Target 5 nanograms/mL · [[Minto|Minto model]]/Plasma · New Bag 14:49
-[[rocuronium]] 50 mg · Given 14:54
-[[plasmalyte-148|Plasma-Lyte 148]] · New Bag 14:49`,
-      explain: `Patient put to sleep. Two computer-controlled pumps feed [[propofol]] and [[remifentanil]] into a vein: [[TIVA]] uses IV drugs instead of gases to keep the patient asleep.`,
+(TCI) [[propofol]] (1%) 500 mg/50 mL
+Target 4 micrograms/mL · [[Marsh|Marsh model]]/Plasma · New Bag 14:53
+[[rocuronium]] 50 mg · Given 14:54`,
+      explain: `The anaesthetist gives [[remifentanil]] by hand first (the patient remembers asking about it as it went in), then computer-controlled pumps take over with remifentanil and [[propofol]]. This is [[TIVA]]: IV drugs instead of gases keep the patient asleep.`,
     },
     {
       time: '14:56', at: 896, milestone: 0,
@@ -77,14 +77,14 @@ Number of Attempts at Approach: 1`,
       explain: `A breathing tube is placed in the windpipe on the first attempt, with a clear view of the vocal cords. A ventilator now breathes for the patient.`,
     },
     {
-      time: '15:00', at: 900, milestone: 1,
-      label: 'The kidney arrives', source: 'ABO organ verification',
+      time: '15:00', at: 900, milestone: 0,
+      label: 'Kidney verified', source: 'ABO organ verification',
       note: `Organ in theatre: 15:00
 Primary surgeon scrubbed in: Yes
 Visual and verbal verification performed by primary surgeon: Yes
 [[Match run]] verified: Yes
 Correct donor organ has been identified for the correct recipient: Yes`,
-      explain: `The donor kidney arrives in theatre on ice. The surgeon checks its paperwork against the patient's before anything else happens.`,
+      explain: `The surgeon checks the donor kidney against the patient's records before anything else happens.`,
     },
     {
       time: '15:00–15:30', at: 900, milestone: 0,
@@ -187,7 +187,6 @@ Implantation:
         `[[Haemostasis]]: Complete`,
         `Any anastomoses redone? No`,
       ],
-      footnote: `The organ checklist labels 17:45 “Anastomosis start”; the anaesthetic log labels it “Kidney Reperfusion”. The 31-minute warm ischaemia time (17:14 off ice → 17:45) matches reperfusion.`,
     },
     {
       time: 'After reperfusion', at: null, milestone: 1,

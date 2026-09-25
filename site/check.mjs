@@ -15,7 +15,7 @@ events.forEach((e, i) => {
   if (![0, 1, 2].includes(e.milestone)) errors.push(`event ${i}: bad milestone`);
   if (e.milestone === 2) peaks++;
   if (e.at != null) { if (e.at < last) errors.push(`event ${i}: out of order`); last = e.at; }
-  for (const s of [e.note, e.explain, e.footnote ?? '', ...(e.detail ?? [])])
+  for (const s of [e.note, e.explain, ...(e.detail ?? [])])
     for (const [, shown, key = shown] of s.matchAll(RE)) {
       used.add(key.toLowerCase());
       if (!keys.has(key.toLowerCase())) errors.push(`event ${i}: unknown term "${key}"`);
