@@ -2,7 +2,7 @@
 
 ## Purpose
 
-A single-page microsite telling the story of my living-donor kidney transplant (Fri 5 Dec 2025, Guy's Hospital), from ward admission to returning to the ward. It shows what the hospital record actually says, next to a plain-English version. It may be shared publicly.
+A single-page microsite telling the story of a living-donor kidney transplant (Fri 5 Dec 2025, Guy's Hospital), from ward admission to returning to the ward. It shows what the hospital record actually says, next to a plain-English version. It may be shared publicly.
 
 Source: EPIC record export, pp. 502–560: case tracking events, the anaesthesia record and drug chart, the op note and benching note, and the recovery nursing notes.
 
@@ -17,7 +17,7 @@ Source: EPIC record export, pp. 502–560: case tracking events, the anaesthesia
 ## Voice
 
 - Left column: note text **verbatim** (abbreviations kept, names swapped for roles in [brackets]).
-- Right column: first person, short, calm. Hardly any adjectives. At most 2 sentences per event.
+- Right column: third person, clinical-plain ("Patient taken to the anaesthetic room."), short, calm. Hardly any adjectives. At most 2 sentences per event.
 - Glossary definitions: one sentence, no further detail (e.g. *"Propofol is a fast-acting intravenous medication used to induce and maintain general anaesthesia."*).
 
 ## Layout
@@ -35,25 +35,25 @@ Fri 5 Dec 2025 unless stated. ★ = milestone band.
 
 | # | Time | Note excerpt (verbatim, source) | Explanation gist | Glossary terms |
 |---|---|---|---|---|
-| 1 ★ | Thu 4 Dec 14:26 | "In Facility" (case tracking) | Admitted to Richard Bright Ward the day before | — |
-| 2 | 11:09 | "Mallampati: II … Anticipated Airway: difficult intubation not expected … Anaesthesia Type: General TIVA … Post-op pain plan: Routine Post-op Analgesia and PCA" (pre-op evaluation) + "ASA Grade: III" (op note) | Anaesthetist checks my airway and explains the plan and risks | Mallampati, TIVA, PCA, ASA |
+| 1 ★ | Thu 4 Dec 14:26 | "In Facility" (case tracking) | Patient admitted to Richard Bright Ward the day before | — |
+| 2 | 11:09 | "Mallampati: II … Anticipated Airway: difficult intubation not expected … Anaesthesia Type: General TIVA … Post-op pain plan: Routine Post-op Analgesia and PCA" (pre-op evaluation) + "ASA Grade: III" (op note) | Anaesthetist assesses the patient's airway; plan and risks explained | Mallampati, TIVA, PCA, ASA |
 | 3 ★ | 13:38 | "Start of cold ischaemia time in donor … Preservation solution: HTK … Static cold storage" (benching note) | The donor kidney is removed, flushed and put on ice. The clock starts. | Cold ischaemia time, HTK |
 | 4 | 14:39–14:40 | "In Anaesthetic Room" + sign-in: "Is there risk of high blood loss? Yes … Are there adequate fluids available to replenish high blood loss? Yes" + "Recipient blood type: O Rh D POSITIVE … Expected donor blood type: O … compatible? Yes" | Safety checklist, blood group match confirmed | WHO checklist, ABO |
 | 5 | 14:41 | "Peripheral IV … Size: 20 G … Location: Hand … Attempts: 1" | First cannula | Cannula |
 | 6 ★ | 14:44 | "Induction" + drug chart: "(TCI) propofol (1%) … Target 4 micrograms/mL … Marsh" (14:53), "(TCI) remifentanil … 5 nanograms/mL … Minto" (14:49), "rocuronium 50 mg" (14:54), "plasmalyte-148 New Bag" (14:49) | Going to sleep | TCI, propofol, remifentanil, Marsh/Minto, rocuronium, Plasma-Lyte |
 | 7 | 14:56 | "Direct Laryngoscope Blade Type: Macintosh … Size: 3 … Cormack-Lehane Classification: Grade I - full view of glottis … ETT Size (mm): 8.0 … ETT securement (cm): 21 … Placement Verified by: capnometry" | Breathing tube in, first attempt | ETT, Macintosh blade, Cormack-Lehane, capnometry |
-| 8 ★ | 15:00 | "Organ in theatre" + "Visual and verbal verification performed by primary surgeon: Yes … Correct donor organ has been identified for the correct recipient: Yes" | The kidney arrives in theatre and is checked against me | — |
+| 8 ★ | 15:00 | "Organ in theatre" + "Visual and verbal verification performed by primary surgeon: Yes … Correct donor organ has been identified for the correct recipient: Yes" | The kidney arrives in theatre and is checked against the patient | — |
 | 9 | 15:00–15:30 | "Peripheral IV … 16 G … Wrist" · "Arterial Line … Site: Radial artery … Indication: continuous BP monitoring and blood sampling" · "Central Access … Patient Position: Trendelenburg … ultrasound-guided … Dialysis line insertion? Yes … Lumen number: three … Side: Right … Site: internal jugular vein … 12 Fr" | More lines: a large drip, a wrist artery line, a neck line | Arterial line, central line, internal jugular, Trendelenburg, Fr (French) |
-| 10 | 15:43–15:44 | "basiliximab 20 mg", "methylPREDNISolone … 1 g", "amikacin 420 mg", "metronidazole 500 mg", "teicoplanin 400 mg" | Drugs to stop my immune system attacking the kidney, plus antibiotics | Basiliximab, methylprednisolone, amikacin, metronidazole, teicoplanin, immunosuppression |
+| 10 | 15:43–15:44 | "basiliximab 20 mg", "methylPREDNISolone … 1 g", "amikacin 420 mg", "metronidazole 500 mg", "teicoplanin 400 mg" | Drugs to stop the patient's immune system attacking the kidney, plus antibiotics | Basiliximab, methylprednisolone, amikacin, metronidazole, teicoplanin, immunosuppression |
 | 11 | 15:45–15:50 | "Body: Supine … Head: Aligned" + time-out: "Has the surgeon reviewed the critical steps? Yes … Correct laterality? Yes" | Positioned; final team check | Supine, time-out |
 | 12 ★ | 15:57 | "Case Start" + "Incision: Right Rutherford Morison Incision … Extraperitoneal space developed. EI Vessels mobilised. Rectus - preserved" + "Paint: ChloraPrep" | First incision | Rutherford Morison, extraperitoneal, external iliac vessels, rectus |
 | 13 | 16:16 | "fentanyl 200 micrograms", "rocuronium 40 mg", "labetalol 10 mg" | Top-ups and blood-pressure control | Fentanyl, labetalol |
-| 14 | 17:14 | "Kidney removed from ice" + "Number of renal arteries: Three … Polar artery: Upper pole - sacrificed … Lower polar artery spatulated to 4mm diameter" | Kidney prepared; its vessels stitched to mine | Benching, polar artery, spatulated, anastomosis, Prolene |
+| 14 | 17:14 | "Kidney removed from ice" + "Number of renal arteries: Three … Polar artery: Upper pole - sacrificed … Lower polar artery spatulated to 4mm diameter" | Kidney prepared; its vessels stitched to the patient's | Benching, polar artery, spatulated, anastomosis, Prolene |
 | 15 ★★ | 17:45 | "Kidney Reperfusion" + "Reperfusion: Good. Lower half a little slow but pinked up with papaverine" + "CIT: 3 hours, 36 minutes · WIT: 31 minutes" | Clamps off, blood flows into the new kidney. **Peak moment.** | Reperfusion, papaverine, CIT, WIT |
 | 16 ★ | (no time recorded) | "Urine produced on table: Yes" | It works straight away | — |
 | 17 | ~18:00–18:30 | "Bladder identified with aid of methylene blue · Ureteric anastomosis over 7Fr stent + antireflux procedure" + "Technique: Ureteroneocystostomy" · fentanyl 200 micrograms (18:23) | Ureter joined to the bladder | Methylene blue, ureteroneocystostomy, ureteric stent, anti-reflux |
 | 18 | 18:58 | "ondansetron 8 mg", "paracetamol infusion 1g" + "Washout · Haemostasis · Drain to RIF" | Anti-sickness and pain relief; closing up begins | Ondansetron, paracetamol, haemostasis, drain, RIF |
-| 19 | ~19:00 | "Closure: 1 loop PDS to fascia · 2/0 Vicryl for fat · 3/0 monocryl to skin · Dermabond" + "PD Catheter removal … Dissection down to deep cuff - excised … Catheter removed" | Stitched up; dialysis tube removed through my old scar | PDS/Vicryl/Monocryl, Dermabond, PD catheter |
+| 19 | ~19:00 | "Closure: 1 loop PDS to fascia · 2/0 Vicryl for fat · 3/0 monocryl to skin · Dermabond" + "PD Catheter removal … Dissection down to deep cuff - excised … Catheter removed" | Stitched up; dialysis tube removed through the old scar | PDS/Vicryl/Monocryl, Dermabond, PD catheter |
 | 20 | 19:18–19:40 | "sugammadex 200 mg" + TCI "Stopped" 19:39 + "propofol … 2,270 mg", "remifentanil … 3,520 micrograms" + "plasmalyte-148" ×4 L | Waking up | Sugammadex |
 | 21 | 19:46 | Sign-out: "Are counts correct? Yes … Additional information: Concern for recovery: blood pressure" | Handover checklist | Sign-out |
 | 22 ★ | 19:59 | "Extubation/Airway Removed" + "Estimated blood loss (EBL) (mL): 100" + "Ipsilateral foot perfusion: Warm, well perfused" | Breathing tube out, operation over (4h 2m of surgery) | Extubation, EBL |
