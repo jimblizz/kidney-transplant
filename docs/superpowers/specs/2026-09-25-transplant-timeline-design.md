@@ -82,7 +82,7 @@ Extra glossary terms: crossmatch, antibody incompatible, parenchyma, spermatic c
 ## Build
 
 - `site/index.html` holds the markup, CSS and render script. `site/content.js` holds `EVENTS` (the table above) and `GLOSSARY` (`{term: definition}`), about 50 entries.
-- Each event: `{time, label, note, explain, milestone: 0|1|2, detail?: string[]}`. Glossary terms are marked in `note`/`explain` text as `[[term]]` or `[[display text|term]]`. The renderer turns them into popover buttons. An unknown term throws at load, which catches typos.
+- Each event: `{time, date?, at, label, source, note, explain, milestone: 0|1|2, detail?: string[], footnote?}`. `at` is minutes since midnight on 5 Dec (null if unknown or on another day). The sticky clock uses it. Glossary terms are marked in `note`/`explain` text as `[[term]]` or `[[display text|term]]`. The renderer turns them into popover buttons. An unknown term throws at load, which catches typos.
 - No framework, no build step, no dependencies.
 - Publish as a private Artifact. It stays private until I choose to share it.
 
