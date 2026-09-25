@@ -55,7 +55,7 @@ Target 5 nanograms/mL · [[Minto|Minto model]]/Plasma · New Bag 14:49
 (TCI) [[propofol]] (1%) 500 mg/50 mL
 Target 4 micrograms/mL · [[Marsh|Marsh model]]/Plasma · New Bag 14:53
 [[rocuronium]] 50 mg · Given 14:54`,
-      explain: `The anaesthetist gives [[remifentanil]] by hand first (the patient remembers asking about it as it went in), then computer-controlled pumps take over with remifentanil and [[propofol]]. This is [[TIVA]]: IV drugs instead of gases keep the patient asleep.`,
+      explain: `The anaesthetist gives [[remifentanil]] (the patient remembers asking about it as it went in), followed by [[propofol]]. This is [[TIVA]]: IV drugs instead of gases keep the patient asleep.`,
     },
     {
       time: '14:56', at: 896, milestone: 0,
