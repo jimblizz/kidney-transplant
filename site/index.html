@@ -175,7 +175,7 @@ const phase = i => i < ICE ? 0 : i < PEAK ? 1 : 2;
 
 document.querySelector('.timeline').innerHTML = events.map((e, i) => `
 <li class="ev m${e.milestone} p${phase(i)}" data-i="${i}">
-  <h2 class="label"><time>${esc(`${e.date ?? ''} ${e.time}`.trim())}</time> ${esc(e.label)}</h2>
+  <h2 class="label"><time>${esc(e.time)}</time> ${esc(e.label)}</h2>
   <div class="note">
     <div class="txt">${link(e.note)}</div>
     ${e.detail ? `<details><summary>Full note</summary><ul>${e.detail.map(d => `<li>${link(d)}</li>`).join('')}</ul></details>` : ''}

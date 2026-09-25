@@ -1,13 +1,7 @@
 // All words on the page. [[term]] or [[shown text|term]] links to GLOSSARY (case-insensitive).
-// `at` = minutes since midnight Fri 5 Dec 2025 (null = unknown / other day); check.mjs uses it for ordering.
+// `at` = minutes since midnight Fri 5 Dec 2025 (null = unknown); check.mjs uses it for ordering.
 globalThis.CONTENT = {
   events: [
-    {
-      time: '14:26', date: 'Thu 4 Dec', at: null, milestone: 1,
-      label: 'Admitted', source: 'Case tracking',
-      note: `In Facility: Thu 4 Dec 2025 14:26`,
-      explain: `Patient admitted to Richard Bright Ward at Guy's Hospital the day before surgery.`,
-    },
     {
       time: '11:09', at: 669, milestone: 0,
       label: 'Anaesthetic assessment', source: 'Anaesthesia preprocedure evaluation · Op note',
