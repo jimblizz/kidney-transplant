@@ -1,5 +1,5 @@
 // All words on the page. [[term]] or [[shown text|term]] links to GLOSSARY (case-insensitive).
-// `at` = minutes since midnight Fri 5 Dec 2025 (null = unknown / other day); drives the sticky clock.
+// `at` = minutes since midnight Fri 5 Dec 2025 (null = unknown / other day); check.mjs uses it for ordering.
 globalThis.CONTENT = {
   events: [
     {
@@ -27,7 +27,7 @@ Post-op pain plan: Routine Post-op Analgesia and [[PCA]]
       note: `Start of [[cold ischaemia time]] in donor: 5/12/2025 13:38
 Preservation solution: [[HTK]]
 Organ preservation technique's: [[Static cold storage]]`,
-      explain: `The donor's kidney is removed in the same theatre, flushed with preservation fluid and packed in ice. From now, a clock runs until it has a blood supply again.`,
+      explain: `The donor's kidney is removed in the same theatre where the transplant will take place, flushed with preservation fluid and packed in ice. From now, a clock runs until it has a blood supply again.`,
     },
     {
       time: '14:39', at: 879, milestone: 0,
@@ -84,7 +84,7 @@ Primary surgeon scrubbed in: Yes
 Visual and verbal verification performed by primary surgeon: Yes
 [[Match run]] verified: Yes
 Correct donor organ has been identified for the correct recipient: Yes`,
-      explain: `The surgeon checks the donor kidney against the patient's records before anything else happens.`,
+      explain: `The surgeon checks the donor kidney against the patient's records before the operation goes ahead.`,
     },
     {
       time: '15:00–15:30', at: 900, milestone: 0,
@@ -239,7 +239,7 @@ Catheter removed`,
 (TCI) propofol · Stopped 19:39 · 2,270 mg total
 (TCI) remifentanil · Stopped 19:39 · 3,520 micrograms total
 plasmalyte-148 · 1,000 mL bags at 15:51, 16:31, 17:43, 18:22`,
-      explain: `[[Sugammadex]] reverses the muscle relaxant, then the anaesthetic pumps are switched off. Over the operation the patient received more than 4 litres of fluid.`,
+      explain: `[[Sugammadex]] reverses the muscle relaxant, then the anaesthetic pumps are switched off. Four one-litre bags of drip fluid were put up over the operation.`,
     },
     {
       time: '19:46', at: 1186, milestone: 0,
@@ -316,7 +316,7 @@ Out of Recovery: 23:31`,
     'TCI': 'Target-controlled infusion: a computer-driven pump that adjusts its rate to hold a set drug level in the blood.',
     'Propofol': 'Propofol is a fast-acting intravenous medication used to induce and maintain general anaesthesia.',
     'Marsh model': 'The formula the pump uses to work out propofol doses from the patient’s weight.',
-    'Remifentanil': 'A very strong, very short-acting opioid painkiller given as a continuous infusion; it wears off within minutes of stopping.',
+    'Remifentanil': 'A very strong, very short-acting opioid painkiller, usually given as a continuous infusion; it wears off within minutes of stopping.',
     'Minto model': 'The formula the pump uses to work out remifentanil doses from the patient’s age, weight and height.',
     'Rocuronium': 'A muscle relaxant that temporarily stops muscles moving, so the breathing tube can go in and the surgeon can work.',
     'Plasma-Lyte 148': 'A balanced salt-water drip that keeps blood volume up, helping the new kidney get a good blood supply.',
@@ -325,7 +325,7 @@ Out of Recovery: 23:31`,
     'Cormack-Lehane': 'A 1–4 grade of how well the vocal cords can be seen; Grade I is a full, easy view.',
     'ETT': 'Endotracheal tube: the breathing tube passed through the mouth into the windpipe.',
     'Capnometry': 'Measuring carbon dioxide in exhaled breath, which confirms the tube is in the windpipe.',
-    'Match run': 'NHS Blood and Transplant’s matching record linking this donor kidney to this recipient.',
+    'Match run': 'The transplant record linking this donor kidney to this recipient.',
     'Arterial line': 'A thin tube in the wrist artery that shows blood pressure beat by beat and allows blood samples without new needles.',
     'Trendelenburg': 'Tilting the patient head-down, which fills the neck veins and makes a line easier and safer to insert.',
     'Dialysis line': 'A wide tube in a large vein that can connect to a dialysis machine and also be used to give drugs.',
@@ -352,7 +352,7 @@ Out of Recovery: 23:31`,
     'Labetalol': 'A drug that lowers blood pressure.',
     'Renal artery': 'The artery carrying blood into the kidney; most kidneys have one, this one had three.',
     'Polar artery': 'An extra artery supplying just the top or bottom tip (pole) of the kidney.',
-    'Sacrificed': 'Tied off rather than reconnected, because the vessel is too small to join safely.',
+    'Sacrificed': 'Tied off rather than reconnected, usually because the vessel is too small to join safely.',
     'Spatulated': 'Cut open lengthways to widen the end, so the join is bigger and less likely to narrow.',
     'Benching': 'Preparing the donor kidney on a cold “back table” before it goes in.',
     'RV to EIV': 'Renal vein to external iliac vein: the kidney’s vein sewn onto the large vein from the right leg.',

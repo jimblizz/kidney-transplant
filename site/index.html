@@ -37,16 +37,12 @@
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.55 var(--serif);overflow-x:clip;
   -webkit-font-smoothing:antialiased}
-a{color:var(--rose)} a:hover{color:var(--ink)}
 .wrap{max-width:70rem;margin:0 auto;padding:0 16px}
 
 /* Intro */
 .intro{display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(4rem,14vh,9rem) 0 3rem}
 .intro h1{margin:0;font:400 clamp(3.25rem,12vw,7rem)/.95 var(--serif);letter-spacing:-.025em;text-wrap:balance}
 .intro .meta{order:-1;margin:0 0 1.5rem;font:500 .75rem/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);max-width:34rem;text-wrap:balance}
-.intro .key{margin:1.75rem 0 0;font-size:clamp(1.15rem,2.6vw,1.35rem);line-height:1.5;max-width:34rem;text-wrap:pretty}
-.intro .team{margin:2rem 0 0;padding-top:1.25rem;border-top:1px solid var(--line);font-size:.95rem;color:var(--muted);max-width:30rem;text-wrap:pretty}
-
 /* Timeline */
 ol.timeline{list-style:none;margin:1rem 0 3rem;padding:0}
 .ev{--node:11px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem 4rem;padding:2.25rem 0;position:relative}
@@ -80,7 +76,6 @@ ol.timeline{list-style:none;margin:1rem 0 3rem;padding:0}
 
 /* Note "printout" */
 .note{min-width:0}
-.src{margin:0 0 .5rem;font:500 .7rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
 .txt{--lh:1.75em;white-space:pre-line;overflow-wrap:anywhere;font:400 .8125rem/var(--lh) var(--mono);color:var(--ink);
   padding:calc(var(--lh) / 2) 1rem calc(var(--lh) / 2) 34px;border:1px solid var(--line);
   background:
@@ -124,14 +119,13 @@ details li::before{content:"· ";color:var(--muted)}
 .gl-x{position:absolute;top:.35rem;right:.35rem;width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:4px;
   background:none;color:var(--muted);font:400 1.5rem/1 var(--serif);cursor:pointer}
 .gl-x:hover{color:var(--ink);background:var(--bg)}
-
-footer{padding:2rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);font:400 .78rem/1.6 var(--mono);text-align:center;text-wrap:balance}
+.nopop .gl{display:none}
 
 /* Motion */
 @media (prefers-reduced-motion:no-preference){
-  html.anim .ev .note,html.anim .ev .explain{opacity:0;translate:0 14px;transition:opacity .7s ease,translate .7s cubic-bezier(.2,.7,.2,1)}
+  html.anim .ev .note,html.anim .ev .explain{translate:0 14px;transition:translate .7s cubic-bezier(.2,.7,.2,1)}
   html.anim .ev .explain{transition-delay:.12s}
-  html.anim .ev.in .note,html.anim .ev.in .explain{opacity:1;translate:0 0}
+  html.anim .ev.in .note,html.anim .ev.in .explain{translate:0 0}
   [popover].gl{transition:opacity .2s,translate .2s,overlay .2s allow-discrete,display .2s allow-discrete;opacity:1;translate:0 0}
   @starting-style{[popover].gl:popover-open{opacity:0;translate:0 10px}}
 }
@@ -163,6 +157,8 @@ footer{padding:2rem 0 4rem;border-top:1px solid var(--line);color:var(--muted);f
 </div>
 <script src="content.js"></script>
 <script>
+document.documentElement.lang = 'en-GB';
+if (!HTMLElement.prototype.hasOwnProperty('popover')) document.documentElement.classList.add('nopop');
 const { events, glossary } = CONTENT;
 const ids = Object.fromEntries(Object.keys(glossary).map((k, i) => [k.toLowerCase(), 'g' + i]));
 const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -179,7 +175,7 @@ const phase = i => i < ICE ? 0 : i < PEAK ? 1 : 2;
 
 document.querySelector('.timeline').innerHTML = events.map((e, i) => `
 <li class="ev m${e.milestone} p${phase(i)}" data-i="${i}">
-  <h2 class="label"><time>${esc(`${e.date ?? ''} ${e.time}`.trim())}</time>${esc(e.label)}</h2>
+  <h2 class="label"><time>${esc(`${e.date ?? ''} ${e.time}`.trim())}</time> ${esc(e.label)}</h2>
   <div class="note">
     <div class="txt">${link(e.note)}</div>
     ${e.detail ? `<details><summary>Full note</summary><ul>${e.detail.map(d => `<li>${link(d)}</li>`).join('')}</ul></details>` : ''}
@@ -191,14 +187,12 @@ document.querySelector('.timeline').innerHTML = events.map((e, i) => `
 
 document.body.insertAdjacentHTML('beforeend', Object.entries(glossary).map(([k, d]) => {
   const id = ids[k.toLowerCase()];
-  return `<div popover id="${id}" class="gl" role="dialog" aria-labelledby="${id}-t"><b id="${id}-t">${esc(k)}</b>${esc(d)}` +
+  return `<div popover id="${id}" class="gl" role="dialog" aria-labelledby="${id}-t"><b id="${id}-t">${esc(k)}</b> ${esc(d)}` +
     `<button type="button" class="gl-x" popovertarget="${id}" popovertargetaction="hide" aria-label="Close">×</button></div>`;
 }).join(''));
 
 const items = [...document.querySelectorAll('.ev')];
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (reduce) items.forEach(li => li.classList.add('in'));
-else document.documentElement.classList.add('anim');
 
 // Geometry-based (works in embedded frames where IntersectionObserver can misreport)
 let queued = false;
@@ -213,7 +207,6 @@ const update = () => {
 const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
 addEventListener('scroll', queue, { passive: true });
 addEventListener('resize', queue);
-update();
-// Failsafe: never leave content hidden
-setTimeout(() => { if (!items.some(li => li.classList.contains('in'))) items.forEach(li => li.classList.add('in')); }, 1500);
+if (reduce) items.forEach(li => li.classList.add('in'));
+else { update(); document.documentElement.classList.add('anim'); }
 </script>
